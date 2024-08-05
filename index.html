@@ -79,6 +79,9 @@
                     rowDiv.classList.add('row');
             
                     projects.forEach((project, index) => {
+                        if (project.name.includes(username)) {
+                            return;
+                        }
                         if (index % 2 === 0) {
                             const colDiv = document.createElement('div');
                             colDiv.classList.add('col-md-4');
