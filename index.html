@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил Кириллов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .navbar {
+            background-color: #fff;
+        }
+        .navbar-brand, .nav-link {
+            color: #000 !important;
+        }
+        .nav-link {
+            margin-right: 15px;
+        }
+        .nav-link:hover {
+            color: #555 !important;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#navbar" data-offset="56">
+
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Михаил Кириллов</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Обо мне</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Проекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="about" class="section">
+        <div class="container text-center">
+            <h2>Обо мне</h2>
+            <p>Программист и вечный студент. Моя жизнь - это бесконечный цикл кода, чая и мемов</p>
+        </div>
+    </div>
+
+    <div id="projects" class="section bg-light">
+        <div class="container text-center">
+            <h2>Проекты</h2>
+            <p>Здесь представлены некоторые из моих работ</p>
+          
+            <script>
+                const username = 'mikhail-kirillov';
+            
+                async function fetchProjects() {
+                    const response = await fetch(`https://api.github.com/users/${username}/repos`);
+                    const projects = await response.json();
+                    const projectsContainer = document.getElementById('projects');
+                    
+                    const rowDiv = document.createElement('div');
+                    rowDiv.classList.add('row');
+            
+                    projects.forEach((project, index) => {
+                        if (index % 2 === 0) {
+                            const colDiv = document.createElement('div');
+                            colDiv.classList.add('col-md-4');
+                            
+                            const cardDiv = document.createElement('div');
+                            cardDiv.classList.add('card', 'mb-4');
+                            
+                            const cardBodyDiv = document.createElement('div');
+                            cardBodyDiv.classList.add('card-body');
+                            
+                            cardBodyDiv.innerHTML = `
+                                <h5 class="card-title">${project.name}</h5>
+                                <p class="card-text">${project.description || 'No description provided'}</p>
+                                <a href="${project.html_url}" class="btn btn-primary" target="_blank">Посмотреть</a>
+                            `;
+                            
+                            cardDiv.appendChild(cardBodyDiv);
+                            colDiv.appendChild(cardDiv);
+                            rowDiv.appendChild(colDiv);
+                        } else {
+                            const colDiv = document.createElement('div');
+                            colDiv.classList.add('col-md-4');
+                            
+                            const cardDiv = document.createElement('div');
+                            cardDiv.classList.add('card', 'mb-4');
+                            
+                            const cardBodyDiv = document.createElement('div');
+                            cardBodyDiv.classList.add('card-body');
+                            
+                            cardBodyDiv.innerHTML = `
+                                <h5 class="card-title">${project.name}</h5>
+                                <p class="card-text">${project.description || 'No description provided'}</p>
+                                <a href="${project.html_url}" class="btn btn-primary" target="_blank">Посмотреть</a>
+                            `;
+                            
+                            cardDiv.appendChild(cardBodyDiv);
+                            colDiv.appendChild(cardDiv);
+                            rowDiv.appendChild(colDiv);
+                        }
+                    });
+                    
+                    projectsContainer.appendChild(rowDiv);
+                }
+            
+                fetchProjects();
+            </script>
+        </div>
+    </div>
+
+    <div id="contacts" class="section">
+        <div class="container text-center">
+          <h2>Контакты</h2>
+          <p>Если у вас есть интересные предложения или идеи, не стесняйтесь связаться со мной по электронной почте</p>
+          <a href="" class="btn btn-outline-dark">Отправить Email</a>
+      </div>
+  </div>
+
+  <footer class="footer bg-dark text-white text-center py-3">
+      <div class="container">
+          <p>2024</p>
+      </div>
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
