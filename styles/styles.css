@@ -338,10 +338,6 @@ footer {
     color: #77e5f7;
 }
 
-.dark-mode :root a:active {
-    color: #77e5f7;
-}
-
 .dark-mode .project a {
     color: #5694e5;
     border-color: #5694e5;
@@ -350,6 +346,10 @@ footer {
 .dark-mode .project a:hover {
     color: #ffffff;
     background-color: #5694e5;
+}
+
+.dark-mode .project a:active {
+    color: #004479;
 }
 
 .profile-photo {
