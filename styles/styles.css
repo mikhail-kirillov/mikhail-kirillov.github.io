@@ -109,6 +109,7 @@ nav ul li a:hover::after {
     cursor: pointer;
     z-index: 1500;
     transition: transform 0.3s;
+    color: #333333;
 }
 
 #theme-toggle:hover {
@@ -201,7 +202,11 @@ nav ul li a:hover::after {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 15px #00000033;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.5s;
+}
+
+.profile-photo.fade-out {
+    opacity: 0;
 }
 
 .profile-photo:hover {
@@ -344,20 +349,12 @@ footer {
 }
 
 .dark-mode .project a:hover {
-    color: #ffffff;
+    color: #005ca2;
     background-color: #5694e5;
 }
 
 .dark-mode .project a:active {
-    color: #004479;
-}
-
-.profile-photo {
-    transition: opacity 0.5s;
-}
-
-.profile-photo.fade-out {
-    opacity: 0;
+    color: #ffffff;
 }
 
 @media (min-width: 768px) {
