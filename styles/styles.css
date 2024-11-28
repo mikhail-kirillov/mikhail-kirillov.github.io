@@ -368,3 +368,8 @@ footer {
         text-align: left;
     }
 }
+
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
+}
